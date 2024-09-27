@@ -49,7 +49,6 @@ export interface Database {
             lead_id: UUID;
             name: string;
             description: string;
-            members: string[];
             timeStamp: Date;
           };
         };
