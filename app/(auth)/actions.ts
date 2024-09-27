@@ -34,19 +34,21 @@ export async function signup(formData: FormData) {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
   };
-  const storageData = {
-    name: formData.get("name") as string,
-    email: formData.get("email") as string,
-    phno: formData.get("phno") as string,
-    dept: formData.get("dept") as string,
-    year: formData.get("year") as string,
-  };
   try {
-    const { error } = await supabase.auth.signUp(data);
+    const { error, data: credentials } = await supabase.auth.signUp(data);
 
     if (error) {
       throw new Error(error.message);
     }
+    const storageData = {
+      id:  credentials.user?.id,
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phno: formData.get("phno") as string,
+      dept: formData.get("dept") as string,
+      year: formData.get("year") as string,
+    };
+    console.log(credentials);
 
     const { error: insertionError } = await supabase
       .from("users")
