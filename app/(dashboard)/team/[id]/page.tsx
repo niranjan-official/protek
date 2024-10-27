@@ -1,3 +1,4 @@
+import MemberCard from "@/components/team/MemberCard";
 import TeamDataCard from "@/components/team/TeamDataCard";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
@@ -43,11 +44,15 @@ const page = async ({ params }: { params: { id: string } }) => {
     return redirect("/sign-in");
   }
 
-  const { isMember } = await checkMemberStatus(team_code, userData.user.id);
+  const { isMember, members } = await checkMemberStatus(
+    team_code,
+    userData.user.id,
+  );
   if (!isMember) {
     console.error("Permission denied");
     return redirect("/denied");
   }
+  console.log(members);
 
   const teamDetails = await getTeamDetails(team_code);
   if (!teamDetails) {
@@ -58,12 +63,21 @@ const page = async ({ params }: { params: { id: string } }) => {
   const isLead = teamDetails.lead_id === userData.user.id;
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-slate-300 p-4">
+    <div className="flex min-h-screen w-full flex-col bg-slate-300">
       <TeamDataCard
         name={teamDetails.name}
         description={teamDetails.description}
         team_code={teamDetails.team_code}
       />
+      <div className="flex w-full flex-col p-4">
+        <h3 className="text-xl font-medium">Members List</h3>
+        <hr className="my-2 border border-b-black" />
+        <div className="mt-4 flex flex-col gap-3">
+          {members.map((member) => (
+            <MemberCard memberId={member.member_id} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

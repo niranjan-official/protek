@@ -1,4 +1,4 @@
-import StatementCard from "@/components/StatementCard";
+import StatementCard from "@/components/statements/StatementCard";
 import { createClient } from "@/utils/supabase/server";
 import React from "react";
 
@@ -15,20 +15,17 @@ const getStatements = async () => {
 };
 
 const page = async () => {
-  
   const supabase = createClient();
   const { data: userData, error: userError } = await supabase.auth.getUser();
-
   const statements = await getStatements();
   return (
     <div className="flex h-screen w-full flex-col bg-slate-100 p-4">
-      <h1 className="text-4xl font-bold">Problem statements</h1>
-      <hr className="my-4 w-full" />
-      <div className="flex flex-col gap-4">
+      <h3 className="text-3xl">Problem statements</h3>
+      <div className="flex flex-col gap-4 mt-5">
         {statements?.map((statement) => (
           <StatementCard
             key={statement.id}
-            id={statement.id}
+            statementId={statement.id}
             userId={userData?.user?.id!}
             title={statement.title}
             description={statement.description}

@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-input{
-  @apply w-full p-2 border bg-transparent rounded-[0.5rem]
+input, textarea{
+  @apply w-full p-2 border bg-transparent rounded-[0.5rem] focus:outline-none focus:ring-0
 }
+
 label{
   @apply w-full flex flex-col items-start gap-1
 }

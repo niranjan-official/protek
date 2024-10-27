@@ -6,14 +6,16 @@ interface TeamDataProps {
   description: string;
   team_code: number;
 }
-const TeamDataCard = ({ name, description, team_code } :TeamDataProps) => {
-  const [lead, setLead] = useState('');
-  // const [lead, setLead] = useState('');
+const TeamDataCard = ({ name, description, team_code }: TeamDataProps) => {
+  const [lead, setLead] = useState("");
   return (
-    <div className="flex flex-col gap-2 bg-white p-3">
-      <p>Team Name: {name}</p>
-      <p>Description: {description}</p>
-      <p>Code: {team_code}</p>
+    <div className="flex flex-col gap-16 bg-pink-700 p-3 text-white rounded-b-3xl pb-8">
+      <h2 className="text-2xl font-extrabold">PROTEK 24</h2>
+      <div>
+        <p className="text-xl">{name}</p>
+        <p className="text-3xl font-extralight">{team_code}</p>
+        <p className="w-3/4 text-sm italic">" {description} "</p>
+      </div>
     </div>
   );
 };

@@ -58,7 +58,7 @@ const page = () => {
             <span className="w-max rounded-xl bg-blue-300 p-2 px-4 font-serif text-sm">
               Year
             </span>
-            <input type="string" name="year" id="year" placeholder="2024" />
+            <input type="string" name="year" id="year" placeholder="2" />
           </label>
         </div>
 

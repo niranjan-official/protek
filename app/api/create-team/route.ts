@@ -6,6 +6,29 @@ export async function POST(req: any) {
   const data = await req.json();
   const supabase = createClient();
 
+  // Check if the user is already in any team
+  const { data: existingMember, error: memberCheckError } = await supabase
+    .from("team_members")
+    .select("team_code")
+    .eq("member_id", data.lead_id)
+    .single();
+
+  if (memberCheckError && memberCheckError.code !== "PGRST116") {
+    return NextResponse.json({
+      success: false,
+      message: memberCheckError.message,
+    });
+  }
+
+  if (existingMember) {
+    return NextResponse.json({
+      success: false,
+      errorType: "ALREADY_IN_TEAM",
+      message: "User is already part of a team.",
+    });
+  }
+
+  // Generate a unique team code
   let code = generateTeamCode();
   let codeExists = true;
 
