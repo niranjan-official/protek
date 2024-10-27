@@ -3,7 +3,7 @@ import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import React from "react";
 
-const page = async ({ userId }: { userId: string }) => {
+const page = async () => {
   const supabase = createClient();
 
   const { data: userData, error } = await supabase.auth.getUser();
