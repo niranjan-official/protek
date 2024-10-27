@@ -15,8 +15,10 @@ const getStatements = async () => {
 };
 
 const page = async () => {
+  
   const supabase = createClient();
   const { data: userData, error: userError } = await supabase.auth.getUser();
+
   const statements = await getStatements();
   return (
     <div className="flex h-screen w-full flex-col bg-slate-100 p-4">

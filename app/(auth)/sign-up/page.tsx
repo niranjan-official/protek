@@ -1,5 +1,6 @@
 import React from "react";
 import { signup } from "../actions";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -16,65 +17,88 @@ const page = () => {
           <p className="text-sm text-black/50">Powered by μLearn PRC</p>
           <hr className="mt-3 w-3/4 bg-black/10" />
         </div>
-        <label htmlFor="name">
-          <h1 className="w-max rounded-xl bg-rose-200 p-2 font-serif text-sm">
+        <label htmlFor="name" className="flex flex-col gap-2">
+          <span className="w-max rounded-xl bg-rose-200 p-2 px-4 font-serif text-sm">
             Name
-          </h1>
-          <input type="string" name="name" id="name" placeholder="Name"/>
+          </span>
+          <input type="string" name="name" id="name" placeholder="Name" />
         </label>
 
-        <label htmlFor="email">
-          <h1 className="w-max rounded-xl bg-purple-300 p-2 font-serif text-sm">
+        <label htmlFor="email" className="flex flex-col gap-2">
+          <span className="w-max rounded-xl bg-purple-300 p-2 px-4 font-serif text-sm">
             E Mail
-          </h1>
-          <input type="email" name="email" id="email" placeholder="example@gmail.com" />
+          </span>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="example@gmail.com"
+          />
         </label>
 
-        <label htmlFor="phno">
-          <h1 className="w-max rounded-xl bg-green-300 p-2 font-serif text-sm">
+        <label htmlFor="phno" className="flex flex-col gap-2">
+          <span className="w-max rounded-xl bg-green-300 p-2 px-4 font-serif text-sm">
             Phone Number
-          </h1>
-          <input type="string" name="phno" id="phno" placeholder="+91 462658626" />
+          </span>
+          <input
+            type="string"
+            name="phno"
+            id="phno"
+            placeholder="+91 462658626"
+          />
         </label>
-        <div className="flex flex-row gap-20">
-          <h1 className="w-max rounded-xl bg-orange-300 p-2 font-serif text-sm">
-            Department
-          </h1>
-          <h1 className="w-max rounded-xl bg-blue-300 p-2 font-serif text-sm">
-            Year
-          </h1>
-        </div>
-        <div className="flex flex-row gap-5">
-          <label htmlFor="dept">
+        <div className="flex flex-row justify-between gap-4">
+          <label htmlFor="phno" className="flex flex-col gap-2">
+            <span className="w-max rounded-xl bg-orange-300 p-2 px-4 font-serif text-sm">
+              Department
+            </span>
             <input type="string" name="dept" id="dept" placeholder="eg:ME" />
           </label>
-
-          <label htmlFor="year">
+          <label htmlFor="phno" className="flex flex-col gap-2">
+            <span className="w-max rounded-xl bg-blue-300 p-2 px-4 font-serif text-sm">
+              Year
+            </span>
             <input type="string" name="year" id="year" placeholder="2024" />
           </label>
         </div>
 
-        <label htmlFor="password">
-          <h1 className="w-max rounded-xl bg-purple-300 p-2 font-serif text-sm">
+        <label htmlFor="password" className="flex flex-col gap-2">
+          <span className="w-max rounded-xl bg-purple-300 p-2 px-4 font-serif text-sm">
             Password
-          </h1>
+          </span>
 
-          <input type="password" name="password" id="password" placeholder="Password"/>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+          />
         </label>
 
-        <label htmlFor="confirm">
-          <h1 className="w-max rounded-xl bg-yellow-200 p-2 font-serif text-sm">
+        <label htmlFor="confirm" className="flex flex-col gap-2">
+          <span className="w-max rounded-xl bg-yellow-200 p-2 px-4 font-serif text-sm">
             Confirm Password
-          </h1>
-          <input type="password" name="confirm" id="confirm" placeholder="Retype Password" />
+          </span>
+          <input
+            type="password"
+            name="confirm"
+            id="confirm"
+            placeholder="Retype Password"
+          />
         </label>
 
         <button
           type="submit"
-          className="rounded-[0.5rem] bg-green-500 p-2 font-serif"
+          className="rounded-[0.5rem] bg-green-500 p-2 font-serif text-white shadow"
         >
           Submit
         </button>
+        <p className="text-center text-neutral-600">
+          Already have an account ?{" "}
+          <Link className="font-bold text-black" href={"/sign-in"}>
+            SignIn
+          </Link>
+        </p>
       </form>
     </div>
   );

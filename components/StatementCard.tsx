@@ -8,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useRouter } from "next/navigation";
 
 interface Props {
   id: string;
@@ -17,6 +18,8 @@ interface Props {
 }
 
 const StatementCard = ({ id, title, description, userId }: Props) => {
+  const Router = useRouter();
+
   const createTeam = async (formData: FormData) => {
     try {
       const teamData = {
@@ -34,6 +37,9 @@ const StatementCard = ({ id, title, description, userId }: Props) => {
         },
       });
       const result = await response.json();
+      if (result.success) {
+        Router.push(`/team/${result.code}`);
+      }
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -91,7 +97,7 @@ const StatementCard = ({ id, title, description, userId }: Props) => {
                         type="submit"
                         className="mt-4 w-full rounded-[0.5rem] bg-blue-500 p-2 text-white"
                       >
-                        Submit
+                        Create Team
                       </button>
                     </form>
                   </DialogHeader>

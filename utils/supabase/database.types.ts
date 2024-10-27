@@ -26,6 +26,7 @@ export interface Database {
             id: UUID;
             title: string;
             description: string;
+            team_code: number;
             selectedCount: number;
             timeStamp: Date;
           };

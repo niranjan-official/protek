@@ -1,5 +1,6 @@
 import React from "react";
 import { login } from "../actions";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -17,10 +18,10 @@ const page = () => {
         <hr className="mt-3 w-3/4 bg-black/10" />
       </div>
 
-      <label htmlFor="email">
-        <h1 className="w-max rounded-xl bg-rose-200 p-2 font-serif text-sm">
+      <label htmlFor="email" className="flex flex-col gap-2">
+        <span className="w-max rounded-xl bg-rose-200 p-2 px-4 font-serif text-sm">
           E Mail
-        </h1>
+        </span>
         <input
           type="email"
           name="email"
@@ -30,10 +31,10 @@ const page = () => {
         />
       </label>
 
-      <label htmlFor="password">
-        <h1 className="w-max rounded-xl bg-purple-300 p-2 font-serif text-sm">
+      <label htmlFor="password" className="flex flex-col gap-2">
+        <span className="w-max rounded-xl bg-purple-300 p-2 px-4 font-serif text-sm">
           Password
-        </h1>
+        </span>
         <input
           type="password"
           name="password"
@@ -45,10 +46,11 @@ const page = () => {
 
       <button
         type="submit"
-        className="rounded-[0.5rem] bg-green-500 p-2 font-serif"
+        className="rounded-[0.5rem] bg-green-500 p-2 font-serif shadow text-white"
       >
         Submit
       </button>
+    <p className="text-center text-neutral-600">Dont have an account ? <Link className="font-bold text-black" href={'/sign-up'}>SignUp</Link></p>
     </form>
   </div>
   );
